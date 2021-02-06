@@ -10,6 +10,7 @@ PYTHON_VERSION=$(cat .python-version)
 TERRAFORM_VERSION=$(cat .terraform-version)
 TERRAGRUNT_VERSION=$(cat .terragrunt-version)
 
+poetry update
 poetry export -o requirements.txt
 
 aws ecr get-login-password --region eu-west-2 | docker login --username AWS --password-stdin $ECR_REPO
