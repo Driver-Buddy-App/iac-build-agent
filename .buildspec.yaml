@@ -4,10 +4,6 @@ phases:
   install:
     runtime-versions:
       python: 3.8
-  pre_build:
-    commands:
-      - terraform --version
-      - terragrunt --version
   build:
     commands:
       - make build
