@@ -20,7 +20,6 @@ docker build --tag "$IMAGE_NAME:$GIT_COMMIT" \
              --build-arg TERRAFORM_VERSION="$TERRAFORM_VERSION" \
              --build-arg TERRAGRUNT_VERSION="$TERRAGRUNT_VERSION" \
              --build-arg BUILDKIT_INLINE_CACHE=1 \
-             --label git_branch="$GIT_BRANCH" \
              --label python_version="$PYTHON_VERSION" \
              --label terraform_version="$TERRAFORM_VERSION" \
              --label terragrunt_version="$TERRAGRUNT_VERSION" .
