@@ -14,10 +14,11 @@ RUN apk --update add --no-cache --virtual .build-deps unzip curl && \
     unzip -o terraform.zip -d /usr/bin && rm terraform.zip && \
     chmod +x /usr/bin/terragrunt && \
     apk add make bash && \
-    apk del .build-deps
+    apk del .build-deps && \
+    pip install --upgrade pip
 
 COPY requirements.txt .
-RUN pip install --user --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 RUN adduser -S codebuild-user
 USER codebuild-user
