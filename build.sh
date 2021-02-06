@@ -19,7 +19,8 @@ aws ecr get-login-password --region eu-west-2 | docker login --username AWS --pa
 docker pull "$IMAGE_NAME:$GIT_BRANCH" || true
 
 # Use branch+commit for tagging:
-docker build --tag "$IMAGE_NAME:$GIT_COMMIT" \
+docker build --tag "$IMAGE_NAME:$GIT_BRANCH" \
+             --tag "$IMAGE_NAME:$GIT_COMMIT" \
              --build-arg PYTHON_VERSION="$PYTHON_VERSION" \
              --build-arg TERRAFORM_VERSION="$TERRAFORM_VERSION" \
              --build-arg TERRAGRUNT_VERSION="$TERRAGRUNT_VERSION" \
