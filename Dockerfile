@@ -16,9 +16,8 @@ RUN apk --update add --no-cache --virtual .build-deps unzip curl && \
     apk add make bash && \
     apk del .build-deps
 
+COPY requirements.txt .
+RUN pip install --user --no-cache-dir -r requirements.txt
+
 RUN adduser -S codebuild-user
 USER codebuild-user
-
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
-
