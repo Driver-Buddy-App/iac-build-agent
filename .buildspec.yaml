@@ -4,6 +4,10 @@ phases:
   install:
     runtime-versions:
       python: 3.8
+    commands:
+      - cd $(pyenv root) && git pull --ff-only && cd - && pyenv --version
+      - pyenv install -s
+      - curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin
   build:
     commands:
       - make build
