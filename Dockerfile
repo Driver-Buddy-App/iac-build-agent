@@ -5,6 +5,9 @@ ENV PYTHONFAULTHANDLER=1
 ARG TERRAFORM_VERSION
 ARG TERRAGRUNT_VERSION
 
+RUN python -m venv /opt/venv
+ENV PATH="/opt/venv/bin:$PATH"
+
 RUN apk --update add --no-cache --virtual .build-deps unzip curl && \
     curl -sSL -o terraform.zip https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip && \
     curl -sSL -o /usr/bin/terragrunt https://github.com/gruntwork-io/terragrunt/releases/download/v${TERRAGRUNT_VERSION}/terragrunt_linux_amd64 && \
