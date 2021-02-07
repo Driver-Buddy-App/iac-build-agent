@@ -13,12 +13,11 @@ Implements the Docker image to be used in the IaC pipeline
 
 ## Requirements
 
-* [Terragrunt](https://github.com/gruntwork-io/terragrunt#install-terragrunt) is used to manage environments and
-  prevent repetitive code.
-* [Terraform](https://learn.hashicorp.com/tutorials/terraform/install-cli?in=terraform/aws-get-started) is used to
-  manage the AWS resources.
-* [Python v3](https://www.python.org/downloads/) will co-ordinate the deployment of resources via Terragrunt.
-* [Poetry](https://python-poetry.org/docs/) will be used to manage the Python build environment.
+For building locally, you will need:
+* an active `AWS_PROFILE` for DriverBuddy AWS account
+* [Docker](https://docs.docker.com/get-started/) installed and running
+* [Python v3](https://www.python.org/downloads/) installed via [pyenv](https://github.com/pyenv/pyenv).
+* [Poetry](https://python-poetry.org/docs/) [v1.1.4](https://github.com/python-poetry/poetry/releases/tag/1.1.4) installed outside this project.
 
 ## Setup
 
