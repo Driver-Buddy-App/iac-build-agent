@@ -15,4 +15,4 @@ phases:
       - make build
 cache:
   paths:
-    - '/root/.pyenv/versions/3.8.7'
+    - '/root/.pyenv/versions/3.8.8'
