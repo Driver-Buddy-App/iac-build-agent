@@ -6,6 +6,7 @@ readme = "README.md"
 authors = ["Lee Myring <mail@thinkstack.io>"]
 
 [tool.poetry.dependencies]
+bandit = "*"
 boto3 = "*"
 python = "^3.8"
 python-terraform = "^0.10.1"
