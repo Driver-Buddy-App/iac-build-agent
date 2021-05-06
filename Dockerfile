@@ -22,3 +22,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 RUN adduser -S codebuild-user
 USER codebuild-user
+
+RUN mkdir -p $HOME/.terraform.d/plugin-cache && \
+    echo "plugin_cache_dir = \"$HOME/.terraform.d/plugin-cache\"" >> ~/.terraformrc
