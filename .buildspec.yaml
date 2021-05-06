@@ -3,7 +3,7 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      python: 3.8
+      python: 3.9
     commands:
       - cd $(pyenv root) && git pull --ff-only && cd - && pyenv --version
       - pyenv install -s
@@ -15,4 +15,4 @@ phases:
       - make build
 cache:
   paths:
-    - '/root/.pyenv/versions/3.8.9'
+    - '/root/.pyenv/versions/3.9.5'
