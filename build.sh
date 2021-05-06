@@ -27,8 +27,9 @@ docker build --tag "$IMAGE_NAME:$IMAGE_TAG" \
              --label terragrunt_version="$TERRAGRUNT_VERSION" .
 
 # Security scanners:
-docker run --entrypoint=sh "$IMAGE_NAME:$IMAGE_TAG" -c "safety check --ignore=CVE-2020-7219 --ignore=CVE-2019-11250"
-trivy --ignore-unfixed --exit-code 1 "$IMAGE_NAME:$IMAGE_TAG"
+docker run --entrypoint=sh "$IMAGE_NAME:$IMAGE_TAG" -c "safety check"
+trivy image --exit-code 0 --severity MEDIUM,HIGH "$IMAGE_NAME:$IMAGE_TAG"
+trivy image --exit-code 1 --severity CRITICAL "$IMAGE_NAME:$IMAGE_TAG"
 
 # Push to the registry:
 docker push "$IMAGE_NAME:$IMAGE_TAG"
