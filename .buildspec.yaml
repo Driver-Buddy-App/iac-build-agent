@@ -5,7 +5,7 @@ phases:
     runtime-versions:
       python: 3.9
     commands:
-      - cd $(pyenv root) && git pull --ff-only && cd - && pyenv --version
+      - cd $(pyenv root) && git pull --rebase --autostash --ff-only && cd - && pyenv --version
       - pyenv install -s
       - pip install --upgrade pip
       - pip install poetry awscli
