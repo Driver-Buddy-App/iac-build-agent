@@ -15,7 +15,7 @@ RUN apk --update add --no-cache --virtual .build-deps unzip curl && \
     curl -sSL -o /usr/bin/get-poetry.py https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py && \
     unzip -o terraform.zip -d /usr/bin && rm terraform.zip && \
     chmod +x /usr/bin/terragrunt && \
-    python get-poetry.py --version ${POETRY_VERSION} && \
+    python /usr/bin/get-poetry.py --version ${POETRY_VERSION} && \
     apk add make bash && \
     apk del .build-deps && \
     pip install --upgrade pip
