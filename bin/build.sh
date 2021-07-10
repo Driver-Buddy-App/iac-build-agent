@@ -23,8 +23,8 @@ docker build --tag "$IMAGE_NAME:$IMAGE_TAG" \
 
 # Security scanners:
 docker run --entrypoint=sh "$IMAGE_NAME:$IMAGE_TAG" -c "safety check"
-trivy image --exit-code 0 --ignorefile /Users/leemyring/source/driverbuddy/iac-build-agent/bin/.trivyignore --ignore-unfixed --severity MEDIUM,HIGH "$IMAGE_NAME:$IMAGE_TAG"
-trivy image --exit-code 1 --ignorefile /Users/leemyring/source/driverbuddy/iac-build-agent/bin/.trivyignore --ignore-unfixed --severity CRITICAL "$IMAGE_NAME:$IMAGE_TAG"
+trivy image --exit-code 0 --ignorefile "$(pwd)/.trivyignore" --ignore-unfixed --severity MEDIUM,HIGH "$IMAGE_NAME:$IMAGE_TAG"
+trivy image --exit-code 1 --ignorefile "$(pwd)/.trivyignore" --ignore-unfixed --severity CRITICAL "$IMAGE_NAME:$IMAGE_TAG"
 
 # Push to the registry:
 docker push "$IMAGE_NAME:$IMAGE_TAG"
