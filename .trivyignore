@@ -1,5 +1,7 @@
 # Accept the risk - don't use consul
 CVE-2020-7219
+CVE-2020-25864
 
 # Accept the risk - don't use k8s
 CVE-2019-11250
+CVE-2020-8565
