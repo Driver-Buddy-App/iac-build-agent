@@ -33,4 +33,4 @@ reset: ## Clean up build environment e.g. .venv
 	rm -rfv .venv
 
 build: ## Build the Docker image
-	 ./build.sh
+	./bin/build.sh

@@ -18,20 +18,13 @@ aws ecr get-login-password --region eu-west-2 | docker login --username AWS --pa
 
 # Use branch+commit for tagging:
 docker build --tag "$IMAGE_NAME:$IMAGE_TAG" \
-             --build-arg POETRY_VERSION="$POETRY_VERSION" \
              --build-arg PYTHON_VERSION="$PYTHON_VERSION" \
-             --build-arg TERRAFORM_VERSION="$TERRAFORM_VERSION" \
-             --build-arg TERRAGRUNT_VERSION="$TERRAGRUNT_VERSION" \
-             --build-arg BUILDKIT_INLINE_CACHE=1 \
-             --label poetry_version="$POETRY_VERSION" \
-             --label python_version="$PYTHON_VERSION" \
-             --label terraform_version="$TERRAFORM_VERSION" \
-             --label terragrunt_version="$TERRAGRUNT_VERSION" .
+             --build-arg BUILDKIT_INLINE_CACHE=1 .
 
 # Security scanners:
 docker run --entrypoint=sh "$IMAGE_NAME:$IMAGE_TAG" -c "safety check"
-trivy image --exit-code 0 --severity MEDIUM,HIGH "$IMAGE_NAME:$IMAGE_TAG"
-trivy image --exit-code 1 --severity CRITICAL "$IMAGE_NAME:$IMAGE_TAG"
+trivy image --exit-code 0 --ignorefile /Users/leemyring/source/driverbuddy/iac-build-agent/bin/.trivyignore --ignore-unfixed --severity MEDIUM,HIGH "$IMAGE_NAME:$IMAGE_TAG"
+trivy image --exit-code 1 --ignorefile /Users/leemyring/source/driverbuddy/iac-build-agent/bin/.trivyignore --ignore-unfixed --severity CRITICAL "$IMAGE_NAME:$IMAGE_TAG"
 
 # Push to the registry:
 docker push "$IMAGE_NAME:$IMAGE_TAG"
