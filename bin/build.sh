@@ -3,7 +3,7 @@ set -euo pipefail
 
 export DOCKER_BUILDKIT=1
 
-ECR_REPO=947967857684.dkr.ecr.eu-west-2.amazonaws.com
+ECR_REPO=100262399921.dkr.ecr.eu-west-2.amazonaws.com
 POETRY_VERSION=$(cat .poetry-version)
 PYTHON_VERSION=$(cat .python-version)
 TERRAFORM_VERSION=$(cat .terraform-version)
