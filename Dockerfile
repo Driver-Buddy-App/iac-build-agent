@@ -20,9 +20,10 @@ COPY --from=compile-image /usr/bin/terragrunt /usr/bin/terragrunt
 COPY --from=compile-image /etc/poetry /etc/poetry
 
 ENV PATH="/etc/poetry/bin:/opt/venv/bin:$PATH"
+ENV DEBIAN_FRONTEND=noninteractive
 VOLUME /var/lib/docker
 
-RUN DEBIAN_FRONTEND=noninteractive apt update && apt install -y --no-install-recommends make bash
+RUN apt update && apt upgrade -y && apt install -y --no-install-recommends make bash
 
 RUN adduser --system codebuild-user
 USER codebuild-user
